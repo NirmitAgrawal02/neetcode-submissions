@@ -4,24 +4,24 @@ class Solution {
         {
             return 0;
         }
-        int l = 0, r = height.length - 1;
-        int leftMax = height[l], rightMax = height[r];
-        int res = 0;
-        while(l < r)
+        int leftMax = height[0], rightMax = height[height.length - 1],left = 0, right = height.length - 1;
+        int total = 0;
+        while(left < right)
         {
             if(leftMax < rightMax)
             {
-                l++;
-                leftMax = Math.max(leftMax, height[l]);
-                res+= leftMax - height[l];
+                left++;
+                leftMax = Math.max(leftMax, height[left]);
+                total += leftMax - height[left];
             }
             else
             {
-                r--;
-                rightMax =Math.max(rightMax, height[r]);
-                res += rightMax - height[r];
+                right--;
+                rightMax = Math.max(rightMax, height[right]);
+                total += rightMax - height[right];
             }
+            
         }
-        return res;
+        return total;
     }
 }
